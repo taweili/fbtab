@@ -2,8 +2,7 @@ Pagetab::Application.routes.draw do
   get "home/index"
 
   match 'home/tab' => 'home#tab'
-  
-  resources :collections
+  match 'home/fbml' => 'home#fbml'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

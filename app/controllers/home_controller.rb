@@ -1,11 +1,13 @@
 class HomeController < ApplicationController
-  protect_from_forgery :except => :tab
+  protect_from_forgery :only => :index
   
   def index
   end
 
   def tab
-    render :layout => false
   end
 
+  def fbml
+  end
+  
 end
