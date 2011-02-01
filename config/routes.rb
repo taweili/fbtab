@@ -1,8 +1,10 @@
 Pagetab::Application.routes.draw do
   get "home/index"
 
-  get "home/tab"
-
+  match 'home/tab' => 'home#tab'
+  
+  resources :collections
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

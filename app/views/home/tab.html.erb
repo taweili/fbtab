@@ -1,2 +1,40 @@
-<h1>Home#tab</h1>
-<p>Find me in app/views/home/tab.html.erb</p>
+<h1>Examples of FBJS in Tab</h1>
+
+
+
+
+
+<a href="#" onclick="do_ajax(Ajax.JSON); return false;">JSON</a><br />
+<a href="#" onclick="do_ajax(Ajax.RAW); return false;">RAW</a><br />
+<a href="#" onclick="do_ajax(Ajax.FBML); return false;">FBML</a><br />
+<div><span id="ajax1"></span><span id="ajax2"></span></div>
+
+<script><!--
+function do_ajax(type) {
+  var ajax = new Ajax();
+  ajax.responseType = type;
+  switch (type) {
+    case Ajax.JSON:
+      ajax.ondone = function(data) {
+        document.getElementById('ajax1').setTextValue(data.message + ' The current time is: ' +  data.time + '. ');
+        document.getElementById('ajax2').setInnerFBML(data.fbml_test);
+      }
+      break;
+
+    case Ajax.FBML:
+      ajax.ondone = function(data) {
+        document.getElementById('ajax1').setInnerFBML(data);
+        document.getElementById('ajax2').setTextValue('');
+      }
+      break;
+
+    case Ajax.RAW:
+      ajax.ondone = function(data) {
+        document.getElementById('ajax1').setTextValue(data);
+        document.getElementById('ajax2').setTextValue('');
+      }
+      break;
+  }
+  ajax.post('<%= collections_url(:only_path => false, :format => "fbml") %>');
+}
+//--></script>
