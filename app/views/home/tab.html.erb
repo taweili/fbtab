@@ -1,9 +1,10 @@
-<link rel="stylesheet" type="text/css" href="http://fbtab.heroku.com/stylesheets/style.css" />
+<%= stylesheet_link_tag "http://fbtab.heroku.com/stylesheets/style.css?12321" %>
 
 <script><!--
 function get_fbml() {
 	var ajax = new Ajax();
-	ajax.responseType = Ajax.FBML;
+	ajax.responseType = Ajax.FBML
+	ajax.requireLogin = true;
   	ajax.ondone = function(data) {
       document.getElementById('ajax_fbml1').setInnerFBML(data);
       document.getElementById('ajax_fbml2').setTextValue('');
@@ -16,7 +17,7 @@ function get_fbml() {
 <div class="container clearfix">
 
 	<div class="grid12 first">
-		Examples of FBJS in Tab
+		<h2>Examples of FBJS in Tab</h2>
 	</div>
 
 	<div class="grid4 first">
@@ -24,13 +25,6 @@ function get_fbml() {
 	</div>
 	<div class="grid8">
 		<strong><%= fb_name(current_facebook_page)%></strong>
-	</div>
-	<div class="grid4 first">
-		AJAX with FBML
-		<a href="#" onclick="get_fbml(); return false;">FBML</a><br />
-	</div>
-	<div class="grid8">
-		<div><span id="ajax_fbml1">&nbsp;</span><span id="ajax_fbml2">&nbsp;</span></div>
 	</div>
 	
 	<div class="grid4 first">
